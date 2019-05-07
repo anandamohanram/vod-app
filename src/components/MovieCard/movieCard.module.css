@@ -1,0 +1,12 @@
+.movieCard_wrapper{
+    display: inline-block;
+    text-align: center;
+    width: 214px;
+    height: calc(317px + 2.5rem);
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin:5px;
+    box-shadow: 2px 2px 1px 1px #eee;
+    overflow: hidden
+}
