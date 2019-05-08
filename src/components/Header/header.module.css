@@ -1,0 +1,19 @@
+.header_wrapper{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid rgb(59, 59, 59);
+    background-color: #fff;
+    color:#000000;
+}
+a{
+    text-decoration: none;
+}
+
+.header_home{
+    margin:0px 30px;
+}
+
+.header_history {
+    margin:0px 30px;
+}
