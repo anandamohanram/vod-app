@@ -1,0 +1,14 @@
+.movieCarousel_wrapper {
+  overflow-x: scroll;
+  overflow-y: hidden;
+  white-space: nowrap;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  font-size: 12px;
+  display: flex;
+  padding: 15px;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
