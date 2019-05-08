@@ -1,12 +1,42 @@
 .movieCard_wrapper{
-    display: inline-block;
-    text-align: center;
-    width: 214px;
-    height: calc(317px + 2.5rem);
+    flex-shrink: 0;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    width: 204px;
+    height: calc(307px + 3rem);
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
     margin:5px;
-    box-shadow: 2px 2px 1px 1px #eee;
-    overflow: hidden
+    overflow: hidden;
+    white-space: normal;
+    /* box-shadow: 1px 1px 1px 1px rgba(133, 132, 132, 0.705); */
+}
+.movieCard_wrapper_small > img{
+    width: 95%;
+    height: 95%;
+}
+
+.movieCard_title{
+    padding-top: 8px;
+    text-align: center
+}
+
+.movieCard_wrapper_small{
+    width: 154px;
+    height: calc(157px + 3rem);
+}
+
+.movieCard_wrapper_small > img{
+    width: 75%;
+    height: 75%;
+}
+
+
+.movieCard_wrapper:hover,
+.movieCard_wrapper:focus{
+    border: 3px solid #00c3ff;
+    border-radius: 5px;
+    margin-top: -5px;
 }
