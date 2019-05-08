@@ -1,7 +1,9 @@
 import React, { Component } from "react";
+import PropTypes from 'prop-types';
 import { MovieCard } from "..";
 import styles from "./movieCarousel.module.css";
 
+//map the movie list to individual Movie Cards and present in a carousel
 export class MovieCarousel extends Component {
 
   render() {
@@ -24,3 +26,11 @@ export class MovieCarousel extends Component {
 }
 
 export default MovieCarousel;
+
+//Typechecking with propTypes
+MovieCarousel.propTypes = {
+  id: PropTypes.string,
+  playedMovie: PropTypes.func,
+  movieList:PropTypes.array,
+  small:PropTypes.bool
+};

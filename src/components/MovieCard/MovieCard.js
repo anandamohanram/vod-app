@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import styles from "./movieCard.module.css";
+import PropTypes from 'prop-types';
 
 export class MovieCard extends Component {
   constructor(props) {
@@ -8,12 +9,21 @@ export class MovieCard extends Component {
     this.cardRef = React.createRef();
   }
 
+  componentDidMount() {
+    //hide video on start
+    this.videoRef.current.style.display = "none";
+  }
+
+
+  //open video with ENTER key press
   handleKeyPress = e => {
     if (e.key === "Enter") {
       this.openMovie();
     }
   };
 
+
+  //show video element in full screen
   openMovie = () => {
     const videoPlayer = this.videoRef.current;
     videoPlayer.style.display = "block";
@@ -29,14 +39,13 @@ export class MovieCard extends Component {
       videoPlayer.msRequestFullscreen();
     }
 
-    document.addEventListener(
-      "webkitfullscreenchange",
-      this.handleFullScreenOff
-    );
+    //listen for user exit from full screen
+    document.addEventListener("webkitfullscreenchange", this.handleFullScreenOff);
     document.addEventListener("mozfullscreenchange", this.handleFullScreenOff);
     document.addEventListener("fullscreenchange", this.handleFullScreenOff);
   };
 
+  //video finishes playing and exit full screen
   closeMovie = () => {
     const videoPlayer = this.videoRef.current;
     videoPlayer.pause();
@@ -49,21 +58,13 @@ export class MovieCard extends Component {
       document.webkitExitFullscreen();
     }
 
-    document.removeEventListener(
-      "webkitfullscreenchange",
-      this.handleFullScreenOff
-    );
-    document.removeEventListener(
-      "mozfullscreenchange",
-      this.handleFullScreenOff
-    );
+    //remove used full screen change listeners
+    document.removeEventListener("webkitfullscreenchange", this.handleFullScreenOff);
+    document.removeEventListener("mozfullscreenchange", this.handleFullScreenOff);
     document.removeEventListener("fullscreenchange", this.handleFullScreenOff);
   };
 
-  componentDidMount() {
-    this.videoRef.current.style.display = "none";
-  }
-
+  //user close video or exit from full screen
   handleFullScreenOff = () => {
     const state =
       document.fullScreen ||
@@ -92,9 +93,10 @@ export class MovieCard extends Component {
   };
 
   componentWillUnmount() {
+    // empty source and remove video from memory
     const videoPlayer = this.videoRef.current;
     videoPlayer.pause();
-    videoPlayer.removeAttribute("src"); // empty source
+    videoPlayer.removeAttribute("src"); 
     videoPlayer.load();
   }
 
@@ -134,3 +136,11 @@ export class MovieCard extends Component {
   }
 }
 export default MovieCard;
+
+//Typechecking with propTypes
+MovieCard.propTypes = {
+  movie: PropTypes.object,
+  playedMovie: PropTypes.func,
+  tabIndex:PropTypes.number,
+  small:PropTypes.bool
+};

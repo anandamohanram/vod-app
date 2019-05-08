@@ -11,8 +11,9 @@ export class HomePage extends Component {
   };
 
   componentDidMount() {
-    this.fillStateFromLocalStorage();
-  console.log(this.state);
+    this.fillStateFromLocalStorage(); //fill previously watched from local storage
+
+    //fetch data from api and set to state
     fetch("https://demo2697834.mockable.io/movies")
       .then(response => response.json())
       .then(movieData =>
@@ -23,11 +24,11 @@ export class HomePage extends Component {
         })
       );
 
-    document.addEventListener("keydown", e => {
 
+      //listen to keypress to use arrow keys
+    document.addEventListener("keydown", e => {
       let carousel = document.getElementById("carousel1");
 
-      
       if (document.querySelectorAll("div :focus").length === 0) {
         if (e.key === "ArrowRight" || e.key === "ArrowLeft")
           carousel.firstElementChild.focus();
@@ -43,6 +44,8 @@ export class HomePage extends Component {
     });
   }
 
+
+  //add played video to Played Movie list and save in state and local storage
   handlePlayedMovie = playedMovie => {
     let playedMovieList = this.state.playedList;
     for (let i = 0; i < playedMovieList.length; i++) {
@@ -60,7 +63,7 @@ export class HomePage extends Component {
   };
 
 
-  
+//fetch data from local storage into state  
 fillStateFromLocalStorage = () => {
   for (let key in this.state) {
     if (localStorage.hasOwnProperty(key)) {
