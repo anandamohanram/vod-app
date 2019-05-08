@@ -77,18 +77,10 @@ export class MovieCard extends Component {
       videoPlayer.style.display = "none";
       this.cardRef.current.focus();
 
-      document.removeEventListener(
-        "webkitfullscreenchange",
-        this.handleFullScreenOff
-      );
-      document.removeEventListener(
-        "mozfullscreenchange",
-        this.handleFullScreenOff
-      );
-      document.removeEventListener(
-        "fullscreenchange",
-        this.handleFullScreenOff
-      );
+    //remove used full screen change listeners
+    document.removeEventListener("webkitfullscreenchange", this.handleFullScreenOff);
+    document.removeEventListener("mozfullscreenchange", this.handleFullScreenOff);
+    document.removeEventListener("fullscreenchange", this.handleFullScreenOff);  
     }
   };
 
@@ -115,6 +107,7 @@ export class MovieCard extends Component {
         onClick={this.openMovie}
         onKeyDown={this.handleKeyPress}
       >
+      <div className={styles.imageContainer}>
         <img
           src={
             movie.images[0].url
@@ -123,6 +116,7 @@ export class MovieCard extends Component {
           }
           alt={movie.title}
         />
+        </div>
         <video
           ref={this.videoRef}
           src={movie.contents[0].url}

@@ -11,6 +11,7 @@ export default function Header() {
 
       <div className={styles.header_history}>
         <a href="/history"> <h4> History </h4> </a>
+        <a href="/"> <h4> Refresh </h4> </a>
       </div>
 
     </div>
