@@ -19,6 +19,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 
 ##Features Implemented
+
     Load from API and display a list of videos in a scrollable horizontal carousel on the home page. Each tile must display a movie title and an associated cover image
 
     User should be able to select a video and play it back in full screen. When playback is finished or user quits it, user must be taken back to home page. 
